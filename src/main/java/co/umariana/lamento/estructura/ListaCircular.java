@@ -57,7 +57,7 @@ public class ListaCircular<T> implements Lista<T> {
     @Override
     public void insertar(int indice, T elemento) {
         if (indice < 0 || indice > tamano) {
-            throw new IndexOutOfBoundsException("Índicee " + indice + ", tamaño " + tamano);
+            throw new IndexOutOfBoundsException("Índice " + indice + ", tamaño " + tamano);
         }
         Nodo<T> nuevo = new Nodo<>(elemento);
 
@@ -109,8 +109,11 @@ public class ListaCircular<T> implements Lista<T> {
         Nodo<T> anterior = (indice == 0) ? cola : nodoEn(indice - 1);
         Nodo<T> nodo = anterior.siguiente;
         anterior.siguiente = nodo.siguiente;
+
+        if (nodo == cabeza) {
             cabeza = nodo.siguiente;
-        
+            }
+            
         if (nodo == cola) {
             cola = anterior;
         }
